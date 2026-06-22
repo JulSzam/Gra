@@ -27,14 +27,14 @@ class paletka:
         strokeWeight(7)
         fill(self.kolor) 
         ellipse(self.x, self.y, self.promien * 2.5, self.promien * 2.5)
-
         noStroke()
         ellipse(self.x, self.y, self.promien * 2, self.promien * 2)
-        
         stroke(self.kol)
         strokeWeight(5)
         ellipse(self.x, self.y, self.promien * 1, self.promien * 1)
-
+#--------------------------------------------------------------------------------
+class krazek:
+        pass
 
 #--------------------------------------------------------------------------------
 class gra: #klasa, która ogarnia całą gre
@@ -42,6 +42,12 @@ class gra: #klasa, która ogarnia całą gre
        self.gracz1 = paletka(width / 2, 100, color(239, 191, 16), color(206, 149, 19),) 
         self.gracz2 = paletka(width / 2, height - 100, color(228, 47, 209), color(126, 25, 168)) 
     def rysuj(self):
+        stroke(30, 50)      #linie planszy
+        strokeWeight(5)
+        line(0, height / 2, width, height / 2)
+        noFill()
+        ellipse(width / 2, height / 2, 200, 200)
+
         self.gracz1.gracz_1_sterowanie()
         self.gracz1.model_paletki()
         self.gracz2.gracz_2_sterowanie()
