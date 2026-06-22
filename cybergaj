@@ -1,6 +1,14 @@
 def setup():
   size(1000, 800)
   global gra
+def draw():
 
 
 class paletka:
+  def __init__(self, x,y, kolor_paletki):
+    self.x=x
+    self.y=y
+    self.kolor= kolor_paletki
+  def model_paletki(self): #idk jak zrobić by sie rysowało
+    fill(self.kolor)
+    ellipse(self.x, self.y)
