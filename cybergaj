@@ -1,14 +1,33 @@
-def setup():
-  size(1000, 800)
-  global gra
-
-
+---------------------------------------------------------------------------------------#paletki graczy
 class paletka:
-  def __init__(self, x,y, kolor_paletki):
-    self.x=x
-    self.y=y
-    self.kolor= kolor_paletki
-    self.promien= 30
-  def model_paletki(self):
-    fill(self.kolor)
-    ellipse(self.x, self.y, self.promien*2, self.promien*2)
+    def __init__(self, x, y, kolor_paletki):
+        self.x = x
+        self.y = y
+        self.kolor = kolor_paletki
+        self.promien = 30
+    
+    def gracz_1_sterowanie(self): #zrobi sie tutaj jakiś ruch klawiszami
+        pass
+
+    def model_paletki(self):
+        fill(self.kolor)
+        noStroke()
+        ellipse(self.x, self.y, self.promien * 2, self.promien * 2)
+
+--------------------------------------------------------------------------------
+class gra:
+    def __init__(self):
+        self.gracz1 = paletka(width / 2, 100, color(239, 191, 16)) 
+    def rysuj(self):
+        self.gracz1.model_paletki()
+
+-------------------------------------------------------------------------------
+Gra = None 
+def setup():
+    size(1000, 800)
+    global Gra
+    Gra = gra() 
+
+def draw():
+    Gra.rysuj()
+
