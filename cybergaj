@@ -1,4 +1,4 @@
----------------------------------------------------------------------------------------#paletki graczy
+#---------------------------------------------------------------------------------------#paletki graczy
 class paletka:
     def __init__(self, x, y, kolor_paletki):
         self.x = x
@@ -13,15 +13,19 @@ class paletka:
         fill(self.kolor)
         noStroke()
         ellipse(self.x, self.y, self.promien * 2, self.promien * 2)
+        stroke(206, 149, 19)
+        strokeWeight(5)
+        ellipse(self.x, self.y, self.promien * 1, self.promien * 1)
 
---------------------------------------------------------------------------------
+
+#--------------------------------------------------------------------------------
 class gra:
     def __init__(self):
         self.gracz1 = paletka(width / 2, 100, color(239, 191, 16)) 
     def rysuj(self):
         self.gracz1.model_paletki()
 
--------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 Gra = None 
 def setup():
     size(1000, 800)
