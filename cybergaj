@@ -1,5 +1,5 @@
 def setup():
-  size(800, 600)
+  size(1000, 800)
   global gra
 
 
