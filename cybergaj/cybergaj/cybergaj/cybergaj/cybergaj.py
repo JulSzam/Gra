@@ -57,6 +57,11 @@ class krazek:
             self.y = y
             self.kolor = kolor_krazka
             self.promien = 45
+            self.predkosc = 10
+            
+        def ruch_krazka(self):
+            self.x += self.predkosc
+            self.y += self.predkosc
 
         def model_krazka(self):
             self.kolor
@@ -82,6 +87,7 @@ class gra: #klasa, która ogarnia całą gre
         self.gracz2.gracz_2_sterowanie()
         self.gracz2.model_paletki()
         self.krazek.model_krazka()
+        self.krazek.ruch_krazka()
 
 #-------------------------------------------------------------------------------
 Gra = None      #to chyba musi być
