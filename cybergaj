@@ -52,13 +52,24 @@ class paletka:
         ellipse(self.x, self.y, self.promien * 1, self.promien * 1)
 #--------------------------------------------------------------------------------
 class krazek:
-        pass
+        def __init__(self, x, y, kolor-krazka):
+            self.x = x
+            self.y = y
+            self.kolor = kolor_krazka
+            self.promien = 45
+
+        def model_krazka(self):
+            self.kolor
+            noStroke()
+            fill(self.kolor)
+            ellipse(self.x,self.y,self.promien,self.promien)
 
 #--------------------------------------------------------------------------------
 class gra: #klasa, która ogarnia całą gre
     def __init__(self):
         self.gracz1 = paletka(width / 2, 100, color(239, 191, 16), color(206, 149, 19),) 
-        self.gracz2 = paletka(width / 2, height - 100, color(228, 47, 209), color(126, 25, 168)) 
+        self.gracz2 = paletka(width / 2, height - 100, color(228, 47, 209), color(126, 25, 168))
+        self.krazek = krazek(width/2, height/2, color(55,55,55)
     def rysuj(self):
         stroke(30, 50)      #linie planszy
         strokeWeight(5)
@@ -70,6 +81,7 @@ class gra: #klasa, która ogarnia całą gre
         self.gracz1.model_paletki()
         self.gracz2.gracz_2_sterowanie()
         self.gracz2.model_paletki()
+        self.krazek.model_krazka
 
 #-------------------------------------------------------------------------------
 Gra = None      #to chyba musi być
