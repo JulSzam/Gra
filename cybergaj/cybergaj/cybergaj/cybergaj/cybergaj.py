@@ -57,11 +57,17 @@ class krazek:
             self.y = y
             self.kolor = kolor_krazka
             self.promien = 45
-            self.predkosc = 10
+            self.predkosc_x = 5
+            self.predkosc_y =5
             
         def ruch_krazka(self):
-            self.x += self.predkosc
-            self.y += self.predkosc
+            self.x += self.predkosc_x
+            self.y += self.predkosc_y
+            
+            if self.y <=0 + self.promien/2 or self.y >= height-self.promien/2:
+                self.predkosc_y *= -0.9 #odbicie góra i dół
+            if self.x <0 + self.promien/2 or self.x >=width-self.promien/2:
+                self.predkosc_x *= -0.9 #odbicie prawo i lewo
 
         def model_krazka(self):
             self.kolor
