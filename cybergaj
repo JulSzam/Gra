@@ -81,7 +81,7 @@ class gra: #klasa, która ogarnia całą gre
         self.gracz1.model_paletki()
         self.gracz2.gracz_2_sterowanie()
         self.gracz2.model_paletki()
-        self.krazek.model_krazka
+        self.krazek.model_krazka()
 
 #-------------------------------------------------------------------------------
 Gra = None      #to chyba musi być
