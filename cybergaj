@@ -52,7 +52,7 @@ class paletka:
         ellipse(self.x, self.y, self.promien * 1, self.promien * 1)
 #--------------------------------------------------------------------------------
 class krazek:
-        def __init__(self, x, y, kolor-krazka):
+        def __init__(self, x, y, kolor_krazka):
             self.x = x
             self.y = y
             self.kolor = kolor_krazka
