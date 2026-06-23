@@ -14,12 +14,30 @@ class paletka:
         if klawisze.get('s'): self.y += self.predkosc
         if klawisze.get('a'): self.x -= self.predkosc
         if klawisze.get('d'): self.x += self.predkosc
+
+        if self.x < self.promien:                     #kolizjie lewa sciana
+            self.x = self.promien
+        if self.x > width - self.promien:             #kolizjie prawa sciana
+            self.x = width - self.promien
+        if self.y < self.promien:                     #kolizjie góra sciana
+            self.y = self.promien
+        if self.y > (height / 2) - self.promien:      #kolizjie dół sciana
+            self.y = (height / 2) - self.promien
         
     def gracz_2_sterowanie(self): 
         if klawisze.get(UP): self.y -= self.predkosc
         if klawisze.get(DOWN): self.y += self.predkosc
         if klawisze.get(LEFT): self.x -= self.predkosc
         if klawisze.get(RIGHT): self.x += self.predkosc
+
+        if self.x < self.promien:                     #kolizjie lewa sciana
+            self.x = self.promien
+        if self.x > width - self.promien:             #kolizjie prawa sciana
+            self.x = width - self.promien
+        if self.y < (height / 2) + self.promien:      #kolizjie góra sciana
+            self.y = (height / 2) + self.promien
+        if self.y > height- self.promien:             #kolizjie dół sciana
+            self.y = height - self.promien
 
     def model_paletki(self):
         self.kolor
