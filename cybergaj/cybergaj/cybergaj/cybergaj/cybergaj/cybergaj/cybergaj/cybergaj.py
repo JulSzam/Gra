@@ -58,7 +58,8 @@ class krazek:
             self.kolor = kolor_krazka
             self.promien = 45
             self.predkosc_x = 5
-            self.predkosc_y =5
+            self.predkosc_y = 5
+            self.powrot = x,y
             
         def ruch_krazka(self):
             self.x += self.predkosc_x
@@ -68,6 +69,13 @@ class krazek:
                 self.predkosc_y *= -0.9 #odbicie góra i dół pomijając bramki
             if self.x <0 + self.promien/2 or self.x >=width-self.promien/2:
                 self.predkosc_x *= -0.9 #odbicie prawo i lewo
+            
+            if self.y <=0 + self.promien/2 and self.x >=350 and self.x <=650 or self.y >=height-self.promien/2 and self.x >= 350 and self.x <=650:
+                self.x= width/2
+                self.y = height/2
+                self.predkosc_x = 5
+                self.predkosc_y = 5
+                self.predkosc_x *= -1
 
         def model_krazka(self):
             self.kolor
@@ -81,6 +89,7 @@ class gra: #klasa, która ogarnia całą gre
         self.gracz1 = paletka(width / 2, 100, color(239, 191, 16), color(206, 149, 19),) 
         self.gracz2 = paletka(width / 2, height - 100, color(228, 47, 209), color(126, 25, 168))
         self.krazek = krazek(width/2, height/2, color(55,55,55))
+
     def rysuj(self):
         stroke(30, 50)      #linie planszy
         strokeWeight(5)
