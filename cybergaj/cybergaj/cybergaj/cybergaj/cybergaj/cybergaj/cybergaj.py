@@ -87,6 +87,8 @@ class gra: #klasa, która ogarnia całą gre
         line(0, height / 2, width, height / 2)
         noFill()
         ellipse(width / 2, height / 2, 200, 200)
+        rect (350, 0, 300, 20)
+        rect (350, height- 20, 300, 20)
 
         self.gracz1.gracz_1_sterowanie()
         self.gracz1.model_paletki()
