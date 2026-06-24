@@ -59,7 +59,6 @@ class krazek:
             self.promien = 45
             self.predkosc_x = 5
             self.predkosc_y = 5
-            self.powrot = x,y
             
         def ruch_krazka(self):
             self.x += self.predkosc_x
@@ -71,11 +70,12 @@ class krazek:
                 self.predkosc_x *= -0.9 #odbicie prawo i lewo
             
             if self.y <=0 + self.promien/2 and self.x >=350 and self.x <=650 or self.y >=height-self.promien/2 and self.x >= 350 and self.x <=650:
-                self.x= width/2
+                self.x = width/2
                 self.y = height/2
                 self.predkosc_x = 5
                 self.predkosc_y = 5
-                self.predkosc_x *= -1
+                self.predkosc_y *= -1
+                #reset pozycji krążka po trafieniu w bramkę
 
         def model_krazka(self):
             self.kolor
