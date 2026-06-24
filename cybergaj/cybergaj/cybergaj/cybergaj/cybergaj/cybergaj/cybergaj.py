@@ -64,8 +64,8 @@ class krazek:
             self.x += self.predkosc_x
             self.y += self.predkosc_y
             
-            if self.y <=0 + self.promien/2 or self.y >= height-self.promien/2:
-                self.predkosc_y *= -0.9 #odbicie góra i dół
+            if self.y <=0 + self.promien/2 and self.x <= 350 or self.y <=0 + self.promien/2 and self.x >= 650 or self.y >= height-self.promien/2 and self.x <= 350 or self.y >= height-self.promien/2 and self.x >=650:
+                self.predkosc_y *= -0.9 #odbicie góra i dół pomijając bramki
             if self.x <0 + self.promien/2 or self.x >=width-self.promien/2:
                 self.predkosc_x *= -0.9 #odbicie prawo i lewo
 
