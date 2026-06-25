@@ -61,10 +61,10 @@ class krazek:
             self.predkosc_y = 5
 
         def reset(self, kierunek_y=1):
-            self.x = width/2
-            self.y = height/2
+            self.x = width / 2
+            self.y = height / 2
             self.predkosc_x = 5
-            self.predkosc_y = 5 * kieunek_y
+            self.predkosc_y = 5 * kierunek_y
             
         def ruch_krazka(self):
             self.x += self.predkosc_x
@@ -81,10 +81,6 @@ class krazek:
                 return "gol_gracza2"
             if self.y <= 0 or self.y >= height or self.x <= 0 or self.x >= width:
                 self.reset(kierunek_y = 1)
-                self.x = width/2
-                self.y = height/2
-                self.predkosc_x = 5
-                self.predkosc_y = 5
                 #reset po wyrzuceniu krążka
                 
         def kolizja_z_paletka(self,p):
