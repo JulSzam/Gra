@@ -69,13 +69,39 @@ class krazek:
             if self.x <0 + self.promien/2 or self.x >=width-self.promien/2:
                 self.predkosc_x *= -0.9 #odbicie prawo i lewo
             
-            if self.y <=0 + self.promien/2 and self.x >=350 and self.x <=650 or self.y >=height-self.promien/2 and self.x >= 350 and self.x <=650:
+            if self.y <=0 + self.promien/2 and self.x >=350 and self.x <=650:
                 self.x = width/2
                 self.y = height/2
                 self.predkosc_x = 5
                 self.predkosc_y = 5
-                self.predkosc_y *= -1
+            if self.y >=height-self.promien/2 and self.x >= 350 and self.x <=650:
+                self.x = width/2
+                self.y = height/2
+                self.predkosc_x = 5
+                self.predkosc_y = -5
                 #reset pozycji krążka po trafieniu w bramkę
+                
+        def kolizja_z_paletka(self,p):
+            promien_paletki = p.promien * 1.25
+            dx = self.x - p.x
+            dy = self.y - p.y
+            odleglosc = sqrt (dx * dx + dy * dy)
+            suma_promieni = self.promien / 2 + promien_paletki
+            
+            if odleglosc < suma_promieni and odleglosc > 0:
+                nx = dx / odleglosc
+                ny = dy / odleglosc
+                
+                przenikniecie = suma_promieni - odleglosc
+                self.x += nx * przenikniecie
+                self.y += ny * przenikniecie
+                #bez tego przenikają przez siebie
+                
+                predkosc_normalna = self.predkosc_x * nx + self.predkosc_y * ny
+                self.predkosc_x = (self.predkosc_x - 2 * predkosc_normalna *nx) * 1.05
+                self.predkosc_y = (self.predkosc_y - 2 * predkosc_normalna * ny) * 1.05
+                # odbicie i przyspieszenie
+                
 
         def model_krazka(self):
             self.kolor
@@ -103,8 +129,13 @@ class gra: #klasa, która ogarnia całą gre
         self.gracz1.model_paletki()
         self.gracz2.gracz_2_sterowanie()
         self.gracz2.model_paletki()
+        #paletki
+        self.krazek.kolizja_z_paletka(self.gracz.1)
+        self.krazek.kolizja_z_paletka(self.gracz.2)
+        #kolizje
         self.krazek.model_krazka()
         self.krazek.ruch_krazka()
+        #krazek
 
 #-------------------------------------------------------------------------------
 Gra = None      #to chyba musi być
