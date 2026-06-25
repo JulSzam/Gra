@@ -58,14 +58,14 @@ class krazek:
             self.y = y
             self.kolor = kolor_krazka
             self.promien = 45
-            self.predkosc_x = 5
-            self.predkosc_y = 5
+            self.predkosc_x = 2.5
+            self.predkosc_y = 2.5
 
         def reset(self, kierunek_y=1):
             self.x = width / 2
             self.y = height / 2
-            self.predkosc_x = 5
-            self.predkosc_y = 5 * kierunek_y
+            self.predkosc_x = 2.5
+            self.predkosc_y = 2.5 * kierunek_y
             
         def ruch_krazka(self):
             self.x += self.predkosc_x
