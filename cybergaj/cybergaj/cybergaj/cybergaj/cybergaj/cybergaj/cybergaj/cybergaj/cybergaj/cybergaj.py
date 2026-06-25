@@ -59,6 +59,12 @@ class krazek:
             self.promien = 45
             self.predkosc_x = 5
             self.predkosc_y = 5
+
+        def reset(self, kierunek_y=1):
+            self.x = width/2
+            self.y = height/2
+            self.predkosc_x = 5
+            self.predkosc_y = 5 * kieunek_y
             
         def ruch_krazka(self):
             self.x += self.predkosc_x
@@ -70,17 +76,11 @@ class krazek:
                 self.predkosc_x *= -0.9 #odbicie prawo i lewo
             
             if self.y <=0 + self.promien/2 and self.x >=350 and self.x <=650:
-                self.x = width/2
-                self.y = height/2
-                self.predkosc_x = 5
-                self.predkosc_y = 5
+                return "gol_gracza1"
             if self.y >=height-self.promien/2 and self.x >= 350 and self.x <=650:
-                self.x = width/2
-                self.y = height/2
-                self.predkosc_x = 5
-                self.predkosc_y = -5
-                #reset pozycji krążka po trafieniu w bramkę
+                return "gol_gracza2"
             if self.y <= 0 or self.y >= height or self.x <= 0 or self.x >= width:
+                self.reset(kierunek_y = 1)
                 self.x = width/2
                 self.y = height/2
                 self.predkosc_x = 5
@@ -146,6 +146,14 @@ class gra: #klasa, która ogarnia całą gre
         #paletki
         self.krazek.kolizja_z_paletka(self.gracz1)
         self.krazek.kolizja_z_paletka(self.gracz2)
+
+        wynik= self.krazek.ruch_krazka()
+        if wynik == "gol_gracza1":
+                self.punkty_gracz1 +=1
+                self.krazek.reset(kierunek_y=1)
+        elif wynik =="gol_gracza2":
+                self.punkty_gracz2 += 1
+                self.krazek.reset(kierunek_y=-1)
         #kolizje
         self.krazek.model_krazka()
         self.krazek.ruch_krazka()
