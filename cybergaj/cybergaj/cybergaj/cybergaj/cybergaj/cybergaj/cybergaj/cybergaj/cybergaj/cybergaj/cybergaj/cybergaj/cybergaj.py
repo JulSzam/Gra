@@ -58,14 +58,14 @@ class krazek:
             self.y = y
             self.kolor = kolor_krazka
             self.promien = 45
-            self.predkosc_x = 2.5
-            self.predkosc_y = 2.5
+            self.predkosc_x = 0
+            self.predkosc_y = 0
 
         def reset(self, kierunek_y=1):
             self.x = width / 2
             self.y = height / 2
-            self.predkosc_x = 2.5
-            self.predkosc_y = 2.5 * kierunek_y
+            self.predkosc_x = 0
+            self.predkosc_y = 0
             
         def ruch_krazka(self):
             self.x += self.predkosc_x
@@ -99,6 +99,10 @@ class krazek:
                 self.x += nx * przenikniecie
                 self.y += ny * przenikniecie
                 #bez tego przenikają przez siebie
+
+                if self.predkosc_x == 0.0 and self.predkosc_y == 0.0:
+                    self.predkosc_x = nx * 5.0
+                    self.predkosc_y = ny * 5.0
                 
                 predkosc_normalna = self.predkosc_x * nx + self.predkosc_y * ny
                 self.predkosc_x = (self.predkosc_x - 2 * predkosc_normalna *nx) * 1.05
@@ -175,9 +179,6 @@ def setup():
     Gra = gra() 
 
 def draw():
-    background(220) #bez tego robi się wąż z drogi paletki
-    Gra.rysuj()
-
     if start_gry == "start":                      #ekran startowy
         background(237, 237, 223)
 #-------------------------------------------------- model przicisku 1
