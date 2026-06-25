@@ -102,6 +102,12 @@ class krazek:
                 self.predkosc_y = (self.predkosc_y - 2 * predkosc_normalna * ny) * 1.05
                 # odbicie i przyspieszenie
                 
+                maks_predkosc = 20
+                if abs(self.predkosc_x) > maks_predkosc:
+                    self.predkosc_x = maks_predkosc * (1 if self.predkosc_x > 0 else -1)
+                if abs(self.predkosc_y) > maks_predkosc:
+                    self.predkosc_y = maks_predkosc * (1 if self.predkosc_y > 0 else -1)
+                
 
         def model_krazka(self):
             self.kolor
@@ -130,8 +136,8 @@ class gra: #klasa, która ogarnia całą gre
         self.gracz2.gracz_2_sterowanie()
         self.gracz2.model_paletki()
         #paletki
-        self.krazek.kolizja_z_paletka(self.gracz.1)
-        self.krazek.kolizja_z_paletka(self.gracz.2)
+        self.krazek.kolizja_z_paletka(self.gracz1)
+        self.krazek.kolizja_z_paletka(self.gracz2)
         #kolizje
         self.krazek.model_krazka()
         self.krazek.ruch_krazka()
