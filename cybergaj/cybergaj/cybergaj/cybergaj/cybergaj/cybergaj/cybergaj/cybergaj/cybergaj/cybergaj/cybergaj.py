@@ -76,9 +76,9 @@ class krazek:
                 self.predkosc_x *= -0.9 #odbicie prawo i lewo
             
             if self.y <=0 + self.promien/2 and self.x >=350 and self.x <=650:
-                return "gol_gracza1"
-            if self.y >=height-self.promien/2 and self.x >= 350 and self.x <=650:
                 return "gol_gracza2"
+            if self.y >=height-self.promien/2 and self.x >= 350 and self.x <=650:
+                return "gol_gracza1"
             if self.y <= 0 or self.y >= height or self.x <= 0 or self.x >= width:
                 self.reset(kierunek_y = 1)
                 #reset po wyrzuceniu krążka
