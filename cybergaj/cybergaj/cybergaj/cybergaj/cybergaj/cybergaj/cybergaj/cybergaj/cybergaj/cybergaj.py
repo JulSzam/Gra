@@ -85,6 +85,7 @@ class krazek:
                 self.y = height/2
                 self.predkosc_x = 5
                 self.predkosc_y = 5
+                #reset po wyrzuceniu krążka
                 
         def kolizja_z_paletka(self,p):
             promien_paletki = p.promien * 1.25
@@ -126,6 +127,8 @@ class gra: #klasa, która ogarnia całą gre
         self.gracz1 = paletka(width / 2, 100, color(239, 191, 16), color(206, 149, 19),) 
         self.gracz2 = paletka(width / 2, height - 100, color(228, 47, 209), color(126, 25, 168))
         self.krazek = krazek(width/2, height/2, color(55,55,55))
+        self.punkty_gracz1 = 0
+        self.punkty_gracz2 = 0
 
     def rysuj(self):
         stroke(30, 50)      #linie planszy
@@ -147,7 +150,16 @@ class gra: #klasa, która ogarnia całą gre
         self.krazek.model_krazka()
         self.krazek.ruch_krazka()
         #krazek
-
+        self.rysuj_punkty()
+        
+    def rysuj_punkty(self):
+        textAlign(CENTER)
+        textSize(48)
+        noStroke()
+        fill(239, 191, 16)
+        text(str(self.punkty_gracz1), width / 2 + 60, height / 2 - 20)
+        fill(228, 47, 209)
+        text(str(self.punkty_gracz2), width / 2 + 60, height / 2 + 55)
 #-------------------------------------------------------------------------------
 Gra = None      #to chyba musi być
 def setup():
