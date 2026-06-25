@@ -109,6 +109,7 @@ class krazek:
                     self.predkosc_x = maks_predkosc * (1 if self.predkosc_x > 0 else -1)
                 if abs(self.predkosc_y) > maks_predkosc:
                     self.predkosc_y = maks_predkosc * (1 if self.predkosc_y > 0 else -1)
+                #ograniczenie prędkości aby krążek nie zwarjował
                 
 
         def model_krazka(self):
@@ -135,14 +136,15 @@ class gra: #klasa, która ogarnia całą gre
         rect (350, 0, 300, 20)
         rect (350, height- 20, 300, 20)
 
+        #paletki
         self.gracz1.gracz_1_sterowanie()
         self.gracz1.model_paletki()
         self.gracz2.gracz_2_sterowanie()
         self.gracz2.model_paletki()
-        #paletki
+        #kolizje
         self.krazek.kolizja_z_paletka(self.gracz1)
         self.krazek.kolizja_z_paletka(self.gracz2)
-
+        #punkty
         wynik= self.krazek.ruch_krazka()
         if wynik == "gol_gracza1":
                 self.punkty_gracz1 +=1
@@ -150,10 +152,10 @@ class gra: #klasa, która ogarnia całą gre
         elif wynik =="gol_gracza2":
                 self.punkty_gracz2 += 1
                 self.krazek.reset(kierunek_y=-1)
-        #kolizje
+        #krążek
         self.krazek.model_krazka()
         self.krazek.ruch_krazka()
-        #krazek
+        #wyświetlanie punktów
         self.rysuj_punkty()
         
     def rysuj_punkty(self):
