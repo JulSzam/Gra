@@ -1,4 +1,5 @@
 klawisze = {}      #słownik na wcisniete klawisze
+start_gry = "start"     #zmiena do ekranu głównego
 #---------------------------------------------------------------------------------------#paletki graczy
 class paletka:
     def __init__(self, x, y, kolor_paletki, kolor_obrys):
@@ -176,6 +177,37 @@ def setup():
 def draw():
     background(220) #bez tego robi się wąż z drogi paletki
     Gra.rysuj()
+
+    if start_gry == "start":                      #ekran startowy
+        background(237, 237, 223)
+#-------------------------------------------------- model przicisku 1
+        stroke(0)
+        strokeWeight(5)
+        fill(207, 207, 68)
+        rect(350, 300, 300, 80) 
+        fill(0)                                    #bez tego tekst znika
+        textSize(35)
+        textAlign(CENTER, CENTER)
+        text("zacznij gre", 500, 340)
+        
+#-------------------------------------------------- model przicisku 2
+        fill(153, 99, 143)
+        rect(350, 450, 300, 80)
+        fill(0)
+        text(u"wyjdź", 500, 490)
+        
+    elif start_gry == "gierka":
+        background(220) 
+        Gra.rysuj()
+
+def mousePressed():
+    global start_gry
+    
+    if start_gry == "start":
+        if mouseX >= 350 and mouseX <= 650 and mouseY >= 300 and mouseY <= 380:
+            start_gry = "gierka"
+        if mouseX >= 350 and mouseX <= 650 and mouseY >= 450 and mouseY <= 530:
+            exit()
 
 def keyPressed():
     if key == CODED:
